@@ -1,29 +1,52 @@
 {
-  "name": "next-web",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev --turbopack",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "clean:lib": "rimraf node_modules"
-  },
-  "dependencies": {
-    "next": "15.4.6",
-    "next-intl": "^4.3.4",
-    "react": "19.1.0",
-    "react-dom": "19.1.0"
-  },
-  "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "15.4.6",
-    "tailwindcss": "^4",
-    "typescript": "^5"
-  }
+	"name": "next-web",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev --turbopack",
+		"build": "next build",
+		"start": "next start",
+		"lint-next": "next lint",
+		"lint": "npm run lint:css && npm run lint:js",
+		"lint:css": "stylelint \"app/**/*.css\"",
+		"lint:js": "eslint \"app/**/*.{js,jsx,ts,tsx}\"",
+		"format": "npm run format:css && npm run format:js",
+		"format:css": "stylelint \"app/**/*.css\" --fix --allow-empty-input",
+		"format:js": "prettier --write \"app/**/*.{js,jsx,ts,tsx}\"",
+		"clean:lib": "rimraf node_modules",
+		"lint-staged": "lint-staged",
+		"prepare": "husky"
+	},
+	"dependencies": {
+		"next": "15.4.6",
+		"next-intl": "^4.3.4",
+		"react": "19.1.0",
+		"react-dom": "19.1.0"
+	},
+	"devDependencies": {
+		"@commitlint/cli": "^19.8.1",
+		"@commitlint/config-conventional": "^19.8.1",
+		"@eslint/eslintrc": "^3",
+		"@tailwindcss/postcss": "^4",
+		"@types/node": "^20",
+		"@types/react": "^19",
+		"@types/react-dom": "^19",
+		"commitlint": "^19.8.1",
+		"eslint": "^9",
+		"eslint-config-next": "15.4.6",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-plugin-prettier": "^5.5.4",
+		"husky": "^9.1.7",
+		"lint-staged": "^16.1.5",
+		"prettier": "^3.6.2",
+		"prettier-plugin-tailwindcss": "^0.6.14",
+		"stylelint": "16.23.1",
+		"stylelint-config-prettier": "^9.0.5",
+		"stylelint-config-recommended": "^17.0.0",
+		"stylelint-config-standard": "^39.0.0",
+		"stylelint-config-tailwindcss": "^1.0.0",
+		"stylelint-order": "^7.0.0",
+		"tailwindcss": "^4",
+		"typescript": "^5"
+	}
 }
