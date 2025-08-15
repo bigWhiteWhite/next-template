@@ -1,36 +1,97 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
 
-First, run the development server:
+## [next-intl国际化4.0](https://next-intl.dev/)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```json
+"next-intl": "^4.3.4",
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+[与服务器操作、元数据和路由处理程序一起](https://next-intl.dev/docs/environments/actions-metadata-route-handlers)[使用`next-intl`](https://next-intl.dev/docs/environments/actions-metadata-route-handlers)
 
-## Learn More
+```tsx
+import { getTranslations } from 'next-intl/server';
 
-To learn more about Next.js, take a look at the following resources:
+export async function generateMetadata({ params }) {
+    const { locale } = await params;
+    const t = await getTranslations({ locale, namespace: 'Metadata' });
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    return {
+        title: t('title')
+    };
+}
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+[基本使用](https://next-intl.dev/docs/usage/messages)
 
-## Deploy on Vercel
+```tsx
+// en.json
+  "HomePage": {
+    "title": "Hello world!",
+    "about": "Go to the about page",
+    "message": "Please refer to <guidelines>the guidelines</guidelines>."
+  }
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+import { useTranslations } from 'next-intl';
+// 根据语言环境对消息进行分组，建议使用组件名称作为命名空间，并将其作为应用中代码组织的主要单位。
+const t = useTranslations('HomePage'); // 也可以不用,全局取
+const base = () => <div>{t('title')}</div>
+
+
+// 富文本
+// markup自动转义消息中的动态值（如 {variable}），防止 XSS 攻击,消息内容包含用户输入或不可信数据时，需确保安全性。
+const base = () => <div> 
+    {
+        t.markup('message', {
+            guidelines: (chunks) => <span className="text-red-200">{chunks}</span>
+        })
+    }
+</div>
+// rich富文本渲染, 允许消息中嵌入 React 组件或 HTML 标签，不自动转义动态值。
+const base = () => <div> 
+    {
+        t.rich('message', {
+            guidelines: (chunks) => <span className="text-red-200">{chunks}</span>
+        })
+    }
+</div>
+
+```
+
+消息列表
+
+```tsx
+import {useTranslations} from 'next-intl';
+ 
+function CompanyStats() {
+  const t = useTranslations('CompanyStats');
+  const items = [
+    {
+      title: t('yearsOfService.title'),
+      value: t('yearsOfService.value')
+    },
+    {
+      title: t('happyClients.title'),
+      value: t('happyClients.value')
+    },
+    {
+      title: t('partners.title'),
+      value: t('partners.value')
+    }
+  ];
+ 
+  return (
+    <ul>
+      {items.map((item, index) => (
+        <li key={index}>
+          <h2>{item.title}</h2>
+          <p>{item.value}</p>
+        </li>
+      ))}
+    </ul>
+  );
+}
+```
+
