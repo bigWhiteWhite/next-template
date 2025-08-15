@@ -1,23 +1,23 @@
 {
-  "lang": "en",
-  "Metadata": {
-    "title": "Metadata!"
-  },
-  "HomePage": {
-    "title": "Hello world!",
-    "about": "Go to the about page",
-    "message": "Please refer to <guidelines>the guidelines</guidelines>.",
-    "yearsOfService": {
-      "title": "yearsOfServiceTitle",
-      "value": "1"
-    },
-    "happyClients": {
-      "title": "happyClientsTitle",
-      "value": "2"
-    },
-    "partners": {
-      "title": "partnersTitle",
-      "value": "3"
-    }
-  }
+	"lang": "en",
+	"Metadata": {
+		"title": "Metadata!"
+	},
+	"HomePage": {
+		"title": "Hello world!",
+		"about": "Go to the about page",
+		"message": "Please refer to <guidelines>the guidelines</guidelines>.",
+		"yearsOfService": {
+			"title": "yearsOfServiceTitle",
+			"value": "1"
+		},
+		"happyClients": {
+			"title": "happyClientsTitle",
+			"value": "2"
+		},
+		"partners": {
+			"title": "partnersTitle",
+			"value": "3"
+		}
+	}
 }
