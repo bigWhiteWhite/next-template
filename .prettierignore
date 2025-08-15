@@ -1,0 +1,13 @@
+.gitlab-ci.yml
+pnpm-lock.yaml
+/node_modules/**
+
+**/*.yml
+**/*.svg
+**/*.sh
+*.yaml
+
+/public/*
+/command/*
+
+.next

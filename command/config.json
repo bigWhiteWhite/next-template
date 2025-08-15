@@ -1,0 +1,6 @@
+{
+	"name": "zmloan",
+	"hashName": "ziah",
+	"routerList": ["/", "/faq", "/loan-agreement", "/privacy-policy", "/terms-of-use", "/blog"],
+	"locales": ["en", "sw"]
+}

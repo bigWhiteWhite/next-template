@@ -1,0 +1,23 @@
+{
+	"app": {
+		"name": "",
+		"title": "",
+		"description": ""
+	},
+	"langs": {
+		"en": "EN"
+	},
+	"locales": {
+		"en": "English"
+	},
+	"navigation": {
+		"home": "Home",
+		"faq": "FAQ",
+		"aboutUs": "About Us",
+		"aboutLoan": "About Loan",
+		"loanAgreement": "Loan Agreement",
+		"termsOfUse": "Terms of Use",
+		"privacyPolicy": "Privacy Policy",
+		"blog": "Blog"
+	}
+}
