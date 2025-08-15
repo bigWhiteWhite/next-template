@@ -3,9 +3,13 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"dev": "next dev --turbopack",
-		"build": "next build",
-		"start": "next start",
+		"development": "cross-env NODE_ENV=development next dev --turbopack --port 3005",
+		"test": "cross-env NODE_ENV=test next dev --turbopack --port 3005",
+		"production": "cross-env NODE_ENV=production next dev --turbopack --port 3005",
+		"build:development": "cross-env NODE_ENV=development next build",
+		"build:test": "cross-env NODE_ENV=test next build",
+		"build:production": "cross-env NODE_ENV=production next build",
+		"start": "next start --port 3005",
 		"lint-next": "next lint",
 		"lint": "npm run lint:css && npm run lint:js",
 		"lint:css": "stylelint \"app/**/*.css\"",
@@ -32,6 +36,7 @@
 		"@types/react": "^19",
 		"@types/react-dom": "^19",
 		"commitlint": "^19.8.1",
+		"cross-env": "^10.0.0",
 		"eslint": "^9",
 		"eslint-config-next": "15.4.6",
 		"eslint-config-prettier": "^10.1.8",
@@ -48,5 +53,8 @@
 		"stylelint-order": "^7.0.0",
 		"tailwindcss": "^4",
 		"typescript": "^5"
+	},
+	"engines": {
+		"node": ">=20.0.0"
 	}
 }
