@@ -4,7 +4,8 @@ import { routing } from '@/i18n/routing'
 import '@/app/globals.css'
 import { getTranslations } from 'next-intl/server'
 
-export async function generateMetadata({ params }) {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function generateMetadata({ params }: any) {
 	const { locale } = await params
 	const t = await getTranslations({ locale, namespace: 'Metadata' })
 	return {
